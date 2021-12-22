@@ -289,4 +289,17 @@ class CalculoDV
         }
         return  $dv;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | 077 - Inter
+    |--------------------------------------------------------------------------
+    */   
+    public static function interNossoNumero($carteira, $numero_boleto)
+    {
+        $n = Util::numberFormatGeral($carteira, 3)
+            . Util::numberFormatGeral($numero_boleto, 10);
+        return Util::modulo10($n);
+    }
+
 }
