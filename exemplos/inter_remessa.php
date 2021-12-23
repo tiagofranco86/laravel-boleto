@@ -64,7 +64,5 @@ $remessa = new \Eduardokum\LaravelBoleto\Cnab\Remessa\Cnab400\Banco\Inter(
 );
 
 $remessa->addBoleto($boleto);
-echo '<pre>';
-print_r($remessa);
-die;
+
 echo $remessa->save(__DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'inter.txt');
