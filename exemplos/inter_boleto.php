@@ -3,7 +3,8 @@ require 'autoload.php';
 $beneficiario = new \Eduardokum\LaravelBoleto\Pessoa(
     [
         'nome'      => 'ACME',
-        'endereco'  => 'Rua um, 123',
+        'endereco'  => 'Rua um 123',
+        'bairro'    => 'Bairro',
         'cep'       => '99999-999',
         'uf'        => 'UF',
         'cidade'    => 'CIDADE',
@@ -50,6 +51,6 @@ $boleto = new Eduardokum\LaravelBoleto\Boleto\Banco\Inter(
     ]
 );
 
-$pdf = new Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
+$pdf = new Eduardokum\LaravelBoleto\Boleto\Render\PdfInter();
 $pdf->addBoleto($boleto);
 $pdf->gerarBoleto($pdf::OUTPUT_SAVE, __DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'inter.pdf');

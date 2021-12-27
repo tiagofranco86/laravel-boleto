@@ -31,7 +31,7 @@ class Inter extends AbstractBoleto implements BoletoContract
      *
      * @var string
      */
-    protected $localPagamento = 'Pagável em qualquer agência';
+    protected $localPagamento = 'PAGÁVEL EM QUALQUER BANCO';
 
     /**
      * Código do banco
@@ -233,7 +233,22 @@ class Inter extends AbstractBoleto implements BoletoContract
         $carteira = Util::numberFormatGeral($this->getCarteira(), 3);
         $dv = CalculoDV::interNossoNumero($carteira, $numero_boleto);
         return $numero_boleto . $dv;
+        //return Util::numberFormatGeral($this->getNumero(), 11);
     }
+
+    /**
+     * Retorna o campo Agência/Beneficiário do boleto
+     *
+     * @return string
+     */
+    public function getAgenciaCodigoBeneficiario()
+    {
+        $agencia = Util::numberFormatGeral($this->getAgencia(), 4);
+        $codigoCliente = Util::numberFormatGeral($this->getConta(), 9);
+
+        return $agencia . ' / ' . $codigoCliente;
+    }
+    
     /**
      * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
@@ -251,7 +266,16 @@ class Inter extends AbstractBoleto implements BoletoContract
      */
     protected function getCampoLivre()
     {
-        return $this->campoLivre = "";
+        if ($this->campoLivre) {
+            return $this->campoLivre;
+        }
+
+        $campoLivre = Util::numberFormatGeral($this->getCarteira(), 3);
+        $campoLivre .= Util::numberFormatGeral($this->getAgencia(), 4);
+        $campoLivre .= Util::numberFormatGeral($this->getConta(), 7);
+        $campoLivre .= Util::numberFormatGeral($this->getNossoNumero(), 11);
+
+        return $this->campoLivre = $campoLivre;
     }
 
     /**
