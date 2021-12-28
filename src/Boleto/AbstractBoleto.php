@@ -1546,16 +1546,30 @@ abstract class AbstractBoleto implements BoletoContract
      */
      public function renderPDF($print = false, $instrucoes = true)
     {
-        if($this->codigoBanco == 104){
-           $pdf = new PdfCaixa();
-        }else{
-           $pdf = new Pdf();
-        }
+        $pdf = $this->getRenderPDF();
         $pdf->addBoleto($this);
         !$print || $pdf->showPrint();
         $instrucoes || $pdf->hideInstrucoes();
 
         return $pdf->gerarBoleto('S', null);
+    }
+
+    /**
+     * Get Render PDF.
+     *
+     * @param bool $print
+     *
+     * @return mixed
+     */
+    public function getRenderPDF()
+    {
+        if($this->codigoBanco == 104) {
+            $pdf = new PdfCaixa();
+        } else {
+            $pdf = new Pdf();
+        }
+
+        return $pdf;
     }
 
     /**
@@ -1569,12 +1583,22 @@ abstract class AbstractBoleto implements BoletoContract
      */
     public function renderHTML($print = false, $instrucoes = true)
     {
-        $html = new Html();
+        $html = $this->getRenderHTML();
         $html->addBoleto($this);
         !$print || $html->showPrint();
         $instrucoes || $html->hideInstrucoes();
 
         return $html->gerarBoleto();
+    }
+
+    /**
+     * Get Render HTML.
+     *
+     * @return mixed
+     */
+    public function getRenderHTML() 
+    {
+        return new Html();
     }
 
     /**

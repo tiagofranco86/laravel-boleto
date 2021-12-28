@@ -3,6 +3,7 @@
 namespace Eduardokum\LaravelBoleto\Boleto\Banco;
 
 use Eduardokum\LaravelBoleto\Boleto\AbstractBoleto;
+use Eduardokum\LaravelBoleto\Boleto\Render\PdfInter;
 use Eduardokum\LaravelBoleto\CalculoDV;
 use Eduardokum\LaravelBoleto\Contracts\Boleto\Boleto as BoletoContract;
 use Eduardokum\LaravelBoleto\Util;
@@ -201,6 +202,18 @@ class Inter extends AbstractBoleto implements BoletoContract
     public function getValorAbatimento()
     {
         return $this->valorAbatimento;
+    }
+
+    /**
+     * Get Render PDF.
+     *
+     * @param bool $print
+     *
+     * @return mixed
+     */
+    public function getRenderPDF()
+    {
+        return new PdfInter();
     }
 
     /**

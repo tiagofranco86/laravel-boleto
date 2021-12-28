@@ -24,6 +24,15 @@ interface Boleto
     const STATUS_CUSTOM = 99;
 
     /**
+     * Get Render PDF.
+     *
+     * @param bool $print
+     *
+     * @return mixed
+     */
+    public function getRenderPDF();
+
+    /**
      * Render PDF.
      *
      * @param bool $print
@@ -38,6 +47,14 @@ interface Boleto
      * @return mixed
      */
     public function renderHTML();
+
+    /**
+     * Get Render HTML.
+     *
+     * @return mixed
+     */
+    public function getRenderHTML();
+
 
     /**
      * Return boleto as a Array.
