@@ -51,6 +51,6 @@ $boleto = new Eduardokum\LaravelBoleto\Boleto\Banco\Inter(
     ]
 );
 
-$pdf = new Eduardokum\LaravelBoleto\Boleto\Render\PdfInter();
+$pdf = new Eduardokum\LaravelBoleto\Boleto\Render\HtmlInter();
 $pdf->addBoleto($boleto);
-$pdf->gerarBoleto($pdf::OUTPUT_SAVE, __DIR__ . DIRECTORY_SEPARATOR . 'arquivos' . DIRECTORY_SEPARATOR . 'inter.pdf');
+echo $pdf->gerarBoleto();

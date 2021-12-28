@@ -10,28 +10,28 @@ class Html implements HtmlContract
     /**
      * @var BoletoContract[]
      */
-    private $boleto = array();
+    protected $boleto = array();
 
     /**
      * @var bool
      */
-    private $print = false;
+    protected $print = false;
 
     /**
      * @var bool
      */
-    private $showInstrucoes = true;
+    protected $showInstrucoes = true;
 
     /**
      * @var \Illuminate\View\Factory
      */
-    private $blade = null;
+    protected $blade = null;
 
     /**
      * @return \Illuminate\View\Factory
      * @throws \Exception
      */
-    private function getBlade() {
+    protected function getBlade() {
         if (!is_null($this->blade)) {
             return $this->blade;
         }
