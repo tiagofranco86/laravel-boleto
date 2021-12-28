@@ -49,97 +49,108 @@
                 </td>
             </tr>
             <tr>
-                <td width="520" colspan="4">
-                    <div class="titulo">Pagador</div>
-                    <div class="conteudo">{{ $pagador['nome'] }}</div>
-                </td>
-                <td>
-                    <div class="titulo">CPF/CNPJ do Pagador</div>
-                    <div class="conteudo rtl">{{ $pagador['documento'] }}</div>
-                </td>
-            </tr>
-            <tr>
-                <td width="130">
-                    <div class="titulo">Nosso Número</div>
-                    <div class="conteudo">{{ $nosso_numero_boleto }}</div>
-                </td>
-                <td width="130">
-                    <div class="titulo">Nr. Documento</div>
-                    <div class="conteudo">{{ $numero_documento }}</div>
-                </td>
-                <td colspan="2">
-                    <div class="titulo">Agência/Código do Beneficiário</div>
-                    <div class="conteudo">{{ $agencia_codigo_beneficiario }}</div>
-                </td>
-                <td width="130" class="caixa-gray-bg">
-                    <div class="titulo">Vencimento</div>
-                    <div class="conteudo rtl">{{ $data_vencimento }}</div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
+                <td colspan="2" width="250" class="top-2">
                     <div class="titulo">Beneficiário</div>
                     <div class="conteudo">{{ $beneficiario['nome'] }}</div>
                 </td>
-                <td colspan="2">
-                    <div class="titulo">CPF/CNPJ do Beneficiário</div>
+                <td class="top-2">
+                    <div class="titulo">CPF/CNPJ</div>
                     <div class="conteudo">{{ $beneficiario['documento'] }}</div>
                 </td>
-                <td width="130" class="caixa-gray-bg">
-                    <div class="titulo">Valor do Documento</div>
+                <td width="120" class="top-2">
+                    <div class="titulo">Ag/Cod. Beneficiário</div>
+                    <div class="conteudo rtl">{{ $agencia_codigo_beneficiario }}</div>
+                </td>
+                <td width="120" class="top-2">
+                    <div class="titulo">Vencimento</div>
+                    <div class="conteudo rtl">{{ $data_vencimento->format('d/m/Y') }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="titulo">Pagador</div>
+                    <div class="conteudo">{{ $pagador['nome_documento'] }} </div>
+                </td>
+                <td>
+                    <div class="titulo">Nº documento</div>
+                    <div class="conteudo rtl">{{ $numero_documento }}</div>
+                </td>
+                <td>
+                    <div class="titulo">Nosso número</div>
+                    <div class="conteudo rtl">{{ $nosso_numero_boleto }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="titulo">Espécie</div>
+                    <div class="conteudo">{{ $especie }}</div>
+                </td>
+                <td>
+                    <div class="titulo">Quantidade</div>
+                    <div class="conteudo rtl"></div>
+                </td>
+                <td>
+                    <div class="titulo">Valor</div>
+                    <div class="conteudo rtl"></div>
+                </td>
+                <td>
+                    <div class="titulo">(-) Descontos / Abatimentos</div>
+                    <div class="conteudo rtl"></div>
+                </td>
+                <td>
+                    <div class="titulo">(=) Valor Documento</div>
                     <div class="conteudo rtl">{{ $valor }}</div>
                 </td>
             </tr>
             <tr>
-                <td colspan="4">
-                    <div class="titulo">Endereço do Beneficiário</div>
-                    <div class="conteudo">{{ $beneficiario['endereco'] }} | {{ $beneficiario['endereco2'] }}</div>
+                <td colspan="2">
+                    <div class="conteudo"></div>
+                    <div class="titulo">Demonstrativo</div>
                 </td>
-                <td width="130">
-                    <div class="titulo">(-) Descontos / Abatimentos</div>
-                    <div class="conteudo rtl"></div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" rowspan="3" style="vertical-align: top;">
-                    <div class="titulo"><b>Demonstrativo</b></div>
-                    <div style="margin-top: 10px" class="conteudo">{{ $demonstrativo[0] }}</div>
-                    <div class="conteudo">{{ $demonstrativo[1] }}</div>
-                    <div class="conteudo">{{ $demonstrativo[2] }}</div>
-                    <div class="conteudo">{{ $demonstrativo[3] }}</div>
-                    <div style="margin-bottom: 10px;" class="conteudo">{{ $demonstrativo[4] }}</div>
-                </td>
-                <td width="130">
+                <td>
                     <div class="titulo">(-) Outras deduções</div>
-                    <div class="conteudo rtl"></div>
+                    <div class="conteudo"></div>
                 </td>
-            </tr>
-            <tr>
-                <td width="130">
+                <td>
                     <div class="titulo">(+) Outros acréscimos</div>
                     <div class="conteudo rtl"></div>
                 </td>
-            </tr>
-            <tr>
-                <td width="130">
-                    <div class="titulo">(=) Valor cobradocss</div>
+                <td>
+                    <div class="titulo">(=) Valor cobrado</div>
                     <div class="conteudo rtl"></div>
                 </td>
             </tr>
             <tr>
-                <td colspan="3" class="bottomborder">
-                    <b>SAC CAIXA</b>: 0800 726 0101 (informações, reclamações, sugestões e elogios) <br>
-                    <b>Para pessoas com deficiência auditiva ou de fala</b>: 0800 726 2492 <br>
-                    <b>Ouvidoria</b>: 0800 725 7474 <br>
-                    <b>caixa.gov.br</b>
+                <td colspan="4">
+                    <div style="margin-top: 10px" class="conteudo">{{ $demonstrativo[0] }}</div>
                 </td>
-                <td width="400" colspan="2" style="vertical-align: top;" class="bottomborder">
-                    <div class="titulo"><center>Autenticação Mecânica - <b>Recibo do Pagador</b></center></div>
-                    <div class="conteudo"></div>
+                <td class="noleftborder">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="notopborder">
+                    <div class="conteudo">{{ $demonstrativo[1] }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="notopborder">
+                    <div class="conteudo">{{ $demonstrativo[2] }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="notopborder">
+                    <div class="conteudo">{{ $demonstrativo[3] }}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="notopborder bottomborder">
+                    <div style="margin-bottom: 10px;" class="conteudo">{{ $demonstrativo[4] }}</div>
                 </td>
             </tr>
             </tbody>
         </table>
+        <div class="linha-pontilhada" style="border-bottom: 0px !important;"><span style="float: left;">Demonstrativo</span>   Autenticação mecânica</div>
         <br>
         <div class="linha-pontilhada">Corte na linha pontilhada</div>
         <br>
